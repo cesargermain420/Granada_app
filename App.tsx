@@ -2,32 +2,38 @@ import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import React from 'react';
 import { ImageBackground } from 'react-native';
 import { useFonts } from 'expo-font';
+import { useColorScheme } from 'react-native';
+import { TEMA_OSCURO, TEMA_CLARO } from './themes/Temas';
+import { Temas } from './themes/Temas';
 
 export default function App() {
-  const COLOR_FONDO = "#121212";
-  const COLOR_TITULO = "#ffdd99";
-  const COLOR_TEXTO_FOTO = "#ffffff";
+const temaActivo = useColorScheme();
+const tema = Temas[temaActivo === 'dark' ? 'dark' : 'light'];
+
 
   const [fontsLoaded] = useFonts({
-  bebasNeue: require('./assets/fonts/BebasNeue-Regular.ttf'),
-});
+    bebasNeue: require('./assets/fonts/BebasNeue-Regular.ttf'),
+  });
 
-if (!fontsLoaded) {
-  return null;
-}
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+
 
 
   return (
-    <View style={[styles.contenedorPrincipal, { backgroundColor: COLOR_FONDO }]}>
+    <View style={[styles.contenedorPrincipal, { backgroundColor: tema.colorFondo }]}>
       <ScrollView>
             <Image
-              source={require('./assets/fotos/granada_dark.jpg')}
+              source={tema.logo}
               style={{ width: '100%', height: 250 }}
               resizeMode="cover"
             />
 
             <View style={styles.contenedorSecundario}>
-              <Text style={[styles.titulo, { color: COLOR_TITULO }]}>
+              <Text style={[styles.titulo, { color: tema.colorTitulo }]}>
                 ¿Qué hacer en Granada?
               </Text>
             </View>
@@ -59,14 +65,14 @@ if (!fontsLoaded) {
                       resizeMode="cover"
                     />
               </ScrollView>
-              <Text style={[styles.titulo, { color: COLOR_TITULO }]}>
+              <Text style={[styles.titulo, { color: tema.colorTitulo }]}>
                 Las mejores rutas</Text>
                     <ImageBackground
                       source={require('./assets/fotos/mejores1.jpg')}
                       style={styles.fotoRuta}
                       resizeMode="cover">
           
-                <Text style={[styles.textoFoto, {color:COLOR_TEXTO_FOTO}]}>Albaicín</Text>               
+                <Text style={[styles.textoFoto, {color: tema.colorTextoFoto}]}>Albaicín</Text>               
 
 
                 </ImageBackground>
@@ -74,7 +80,7 @@ if (!fontsLoaded) {
                       source={require('./assets/fotos/mejores2.jpg')}
                       style={styles.fotoRuta}
                       resizeMode="cover">
-                <Text style={[styles.textoFoto, {color:COLOR_TEXTO_FOTO}]}>Sacromonte</Text>     
+                <Text style={[styles.textoFoto, {color:tema.colorTextoFoto}]}>Sacromonte</Text>     
                 </ImageBackground>
 
 
@@ -83,10 +89,10 @@ if (!fontsLoaded) {
                       style={styles.fotoRuta}
                       resizeMode="cover"
                     >
-                <Text style={[styles.textoFoto, {color:COLOR_TEXTO_FOTO}]}>Realejo</Text>
+                <Text style={[styles.textoFoto, {color: tema.colorTextoFoto}]}>Realejo</Text>
                 </ImageBackground>
 
-                <Text style={[styles.titulo, { color: COLOR_TITULO }]}>
+                <Text style={[styles.titulo, { color: tema.colorTitulo }]}>
                   Los mejores alojamientos
                 </Text>
                 <View style={styles.contenedorFotosAlojamiento}>
