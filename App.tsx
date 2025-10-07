@@ -73,13 +73,52 @@ if (!fontsLoaded) {
                     <ImageBackground
                       source={require('./assets/fotos/mejores2.jpg')}
                       style={styles.fotoRuta}
-                      resizeMode="cover"
-                    />
+                      resizeMode="cover">
+                <Text style={[styles.textoFoto, {color:COLOR_TEXTO_FOTO}]}>Sacromonte</Text>     
+                </ImageBackground>
+
+
                     <ImageBackground
                       source={require('./assets/fotos/mejores3.jpg')}
                       style={styles.fotoRuta}
                       resizeMode="cover"
-                    />
+                    >
+                <Text style={[styles.textoFoto, {color:COLOR_TEXTO_FOTO}]}>Realejo</Text>
+                </ImageBackground>
+
+                <Text style={[styles.titulo, { color: COLOR_TITULO }]}>
+                  Los mejores alojamientos
+                </Text>
+                <View style={styles.contenedorFotosAlojamiento}>
+                  <View style={styles.contenedorAlojamiento}>
+                    <Image
+                      source={require('./assets/fotos/alojamiento1.jpg')}
+                      style={styles.fotoAlojamiento}>
+
+                      </Image>
+                  </View>
+                  <View style={styles.contenedorAlojamiento}>
+                    <Image
+                      source={require('./assets/fotos/alojamiento2.jpg')}
+                      style={styles.fotoAlojamiento}>
+                        
+                      </Image>
+                  </View>
+                  <View style={styles.contenedorAlojamiento}>
+                    <Image
+                      source={require('./assets/fotos/alojamiento3.jpg')}
+                      style={styles.fotoAlojamiento}>
+                        
+                      </Image>
+                  </View>
+                  <View style={styles.contenedorAlojamiento}>
+                    <Image
+                      source={require('./assets/fotos/alojamiento4.jpg')}
+                      style={styles.fotoAlojamiento}>
+                        
+                      </Image>
+                  </View>
+                  </View>
      
       </ScrollView>
     </View>
@@ -123,5 +162,25 @@ const styles = StyleSheet.create({
     fontFamily:"bebasNeue",
     fontSize:48,
     elevation:5
-  }
-});
+  },
+   contenedorFotosAlojamiento: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 5, 
+    marginBottom: 15,
+  },
+  fotoAlojamiento: {
+    width: '100%',
+    height: '100%',
+  },
+
+  contenedorAlojamiento: {
+    width: '49%',
+    aspectRatio: 1,
+  },
+
+
+})
+
+
